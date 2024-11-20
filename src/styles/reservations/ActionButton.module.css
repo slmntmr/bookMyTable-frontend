@@ -1,0 +1,15 @@
+/* src/styles/reservations/ActionButton.module.css */
+
+.button {
+  padding: 10px 20px;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  opacity: 0.9;
+}

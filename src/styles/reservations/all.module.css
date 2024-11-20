@@ -1,0 +1,14 @@
+/* src/styles/all.module.css */
+.container {
+  padding: 20px;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.error {
+  color: red;
+  margin-top: 20px;
+}
