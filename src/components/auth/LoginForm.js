@@ -1,47 +1,47 @@
+// src/components/auth/LoginForm.js
 "use client";
 
-import { useState } from 'react';
-import { login } from '../../services/authService';
-import styles from '../../styles/auth/login.module.css';
+import { useState } from "react";
+import { loginUser } from "../../services/auth/loginService";
+import styles from "../../styles/auth/login.module.css";
 
 export default function LoginForm() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const data = await login(email, password); // API çağrısı
-      console.log('Login successful:', data);
+      const data = await loginUser({ email, password });
+      console.log("Login successful:", data);
+      alert("Login successful!");
     } catch (err) {
-      setError(err.message); // Hata mesajını göster
+      setError(err.message);
     }
   };
 
   return (
     <form onSubmit={handleSubmit} className={styles.form}>
       <div className={styles.formGroup}>
-        <label className={styles.formLabel}>Email</label>
+        <label>Email:</label>
         <input
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-          className={styles.formInput}
         />
       </div>
       <div className={styles.formGroup}>
-        <label className={styles.formLabel}>Password</label>
+        <label>Password:</label>
         <input
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
-          className={styles.formInput}
         />
       </div>
-      {error && <p className={styles.errorMessage}>{error}</p>}
+      {error && <p className={styles.error}>{error}</p>}
       <button type="submit" className={styles.submitButton}>Login</button>
     </form>
   );

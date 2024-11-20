@@ -2,15 +2,25 @@
 "use client";
 
 import { useState } from "react";
-import styles from "../../styles/reservations/RegisterForm.module.css"; // Güncellenmiş stil yolu
+import { registerUser } from "../../services/auth/registerService";
+import styles from "../../styles/auth/register.module.css";
 
-export default function RegisterForm({ onSubmit }) {
+export default function RegisterForm() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
+  const [success, setSuccess] = useState(null);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    onSubmit({ email, password });
+    try {
+      const data = await registerUser({ email, password });
+      setSuccess(data.message); // Başarı mesajını ayarla
+      setError(null); // Hata mesajını temizle
+    } catch (err) {
+      setError(err.message); // Hata mesajını ayarla
+      setSuccess(null); // Başarı mesajını temizle
+    }
   };
 
   return (
@@ -35,6 +45,8 @@ export default function RegisterForm({ onSubmit }) {
           required
         />
       </div>
+      {error && <p className={styles.error}>{error}</p>}
+      {success && <p className={styles.success}>{success}</p>}
       <button type="submit" className={styles.submitButton}>Register</button>
     </form>
   );
