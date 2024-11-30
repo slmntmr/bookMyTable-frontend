@@ -1,9 +1,8 @@
-/* src/styles/all.module.css */
 .container {
   padding: 20px;
 }
 
-h1 {
+.pageTitle {
   font-size: 24px;
   margin-bottom: 20px;
 }

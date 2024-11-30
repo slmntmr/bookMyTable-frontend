@@ -1,6 +1,28 @@
-.form {
+/* src/styles/auth/login.module.css */
+
+.loginContainer {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #f9f9f9;
+  padding: 1rem;
+}
+
+.pageTitle {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.form {
+  width: 100%;
+  max-width: 400px;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .formGroup {
@@ -8,23 +30,37 @@
 }
 
 .formLabel {
+  display: block;
   margin-bottom: 0.5rem;
+  color: #555;
 }
 
 .formInput {
+  width: 100%;
   padding: 0.75rem;
   border: 1px solid #ddd;
-  border-radius: var(--border-radius);
+  border-radius: 4px;
+  font-size: 1rem;
 }
 
 .submitButton {
+  width: 100%;
   padding: 0.75rem;
-  background-color: var(--primary-color);
+  background-color: #007bff;
   color: #fff;
   border: none;
   cursor: pointer;
+  font-size: 1rem;
+  border-radius: 4px;
+  transition: background-color 0.3s;
 }
 
 .submitButton:hover {
   background-color: #0056b3;
+}
+
+.error {
+  color: red;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
 }

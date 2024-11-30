@@ -1,42 +1,63 @@
-/* src/styles/reservations/RegisterForm.module.css */
-
 .form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+  background-color: #f8f9fa; /* Açık arka plan */
+  border: 1px solid #ddd; /* İnce kenar çizgisi */
+  border-radius: 10px; /* Köşeler yuvarlak */
+  max-width: 400px; /* Form genişliği */
+  margin: 0 auto; /* Ortala */
+  padding: 20px; /* İçerik boşluğu */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Hafif gölge */
 }
 
-.formGroup {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 10px;
+.title {
+  font-size: 1.5rem; /* Başlık boyutu */
+  margin-bottom: 20px;
+  text-align: center; /* Ortala */
+  color: #333;
+}
+
+.inputGroup {
+  margin-bottom: 15px; /* Her grup arasında boşluk */
 }
 
 .label {
-  font-size: 14px;
-  font-weight: bold;
-  color: #555;
+  font-size: 1rem; /* Etiket boyutu */
   margin-bottom: 5px;
+  display: block; /* Blok görüntü */
+  color: #555;
 }
 
 .input {
-  padding: 10px;
-  font-size: 16px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
+  width: 100%; /* Genişlik */
+  padding: 10px; /* İçerik boşluğu */
+  font-size: 1rem;
+  border: 1px solid #ccc; /* Gri kenar */
+  border-radius: 5px; /* Köşeleri yuvarlak */
 }
 
-.submitButton {
+.input:focus {
+  border-color: #007bff; /* Odaklanıldığında mavi kenar */
+  outline: none;
+  box-shadow: 0 0 4px rgba(0, 123, 255, 0.5); /* Mavi gölge */
+}
+
+.button {
+  width: 100%;
   padding: 10px;
-  font-size: 16px;
-  color: white;
-  background-color: #007bff;
+  font-size: 1rem;
+  background-color: #007bff; /* Mavi buton */
+  color: #fff; /* Beyaz yazı */
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
 }
 
-.submitButton:hover {
-  background-color: #0056b3;
+.button:hover {
+  background-color: #0056b3; /* Hover rengi */
+}
+
+.error {
+  color: #dc3545; /* Kırmızı hata rengi */
+  font-size: 0.9rem;
+  margin-top: 10px;
+  text-align: center; /* Ortala */
 }

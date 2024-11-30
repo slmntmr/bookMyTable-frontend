@@ -1,5 +1,3 @@
-// src/services/auth/registerService.js
-
 export async function registerUser(registerData) {
   try {
     const response = await fetch("http://localhost:8080/auth/register", {
@@ -12,11 +10,14 @@ export async function registerUser(registerData) {
 
     if (!response.ok) {
       const errorData = await response.json(); // Hata yanıtını JSON olarak ayrıştır
-      throw new Error(errorData.message); // Hata mesajını fırlat
+      if (errorData.errors && errorData.errors.length > 0) {
+        // Backend'den gelen validasyon hataları
+        throw new Error(errorData.errors[0].defaultMessage || "Kayıt başarısız oldu.");
+      }
+      throw new Error(errorData.message || "Kayıt başarısız oldu.");
     }
 
-    const data = await response.json(); // Başarılı yanıtı JSON olarak ayrıştır
-    return data;
+    return await response.json(); // Başarılı yanıtı JSON olarak ayrıştır
   } catch (error) {
     console.error("Registration error:", error);
     throw error;
