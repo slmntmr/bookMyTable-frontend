@@ -5,27 +5,29 @@ import { createReservation } from "../../../../services/reservations/createServi
 import styles from "../../../../styles/reservations/create.module.css";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import Modal from "../../../../components/common/Modal";
 
 export default function CreateReservation() {
   const router = useRouter();
-  const [error, setError] = useState(null);
+  const [modalMessage, setModalMessage] = useState("");
 
   const handleCreate = async (formData) => {
-    setError(null);
     try {
       await createReservation(formData);
-      alert("Rezervasyon başarıyla oluşturuldu!");
-      router.push("/reservations");
+      setModalMessage("Rezervasyon başarıyla oluşturuldu!");
+      router.push("/dashboard/admin/all");
     } catch (error) {
-      setError(error.message || "Rezervasyon oluşturulurken bir hata oluştu.");
+      setModalMessage(error.message || "Rezervasyon oluşturulurken bir hata oluştu.");
     }
   };
 
   return (
     <div className={styles.container}>
       <h1 className={styles.heading}>Yeni Rezervasyon Oluştur</h1>
-      {error && <p className={styles.error}>{error}</p>}
       <ReservationForm onSubmit={handleCreate} />
+      {modalMessage && (
+        <Modal message={modalMessage} onClose={() => setModalMessage("")} />
+      )}
     </div>
   );
 }
