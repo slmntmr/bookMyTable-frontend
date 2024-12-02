@@ -2,10 +2,10 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import CreateRestaurantForm from "../../../../components/restaurants/CreateRestaurantForm";
-import { createRestaurant } from "../../../../services/restaurants/createRestaurantService";
-import Modal from "../../../../components/common/Modal";
-import styles from "../../../../styles/restaurants/createRestaurant.module.css";
+import CreateRestaurantForm from "../../../../../components/restaurants/CreateRestaurantForm";
+import { createRestaurant } from "../../../../../services/restaurants/createRestaurantService";
+import Modal from "../../../../../components/common/Modal";
+import styles from "../../../../../styles/restaurants/createRestaurantForm.module.css";
 
 export default function CreateRestaurantPage() {
   const router = useRouter();
@@ -15,7 +15,7 @@ export default function CreateRestaurantPage() {
     try {
       await createRestaurant(formData);
       setModalMessage("Restoran başarıyla eklendi!");
-      router.push("/dashboard/admin/restaurants");
+      /* router.push("/dashboard/admin/restaurants/create"); */
     } catch (error) {
       setModalMessage(error.message);
     }

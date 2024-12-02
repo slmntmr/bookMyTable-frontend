@@ -9,6 +9,8 @@ export default function AdminDashboard() {
         <li><a href="/dashboard/admin/delete">Delete Tasks</a></li>
         <li><a href="/dashboard/admin/pending">Pending Tasks</a></li>
         <li><a href="/dashboard/admin/reject">Reject Tasks</a></li>
+        <li><a href="/dashboard/admin/restaurants/create">Create Restaurants</a></li>
+
       </ul>
     </div>
   );
