@@ -1,26 +1,27 @@
-export async function loginUser(loginData) {
+export async function loginService(credentials) {
   try {
     const response = await fetch("http://localhost:8080/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(loginData),
+      body: JSON.stringify(credentials),
     });
 
+    // Backend'den gelen yanıtın kontrolü
     if (!response.ok) {
-      // Hata durumunda, backend'den dönen hata mesajını yakalarız
       const errorData = await response.json();
-      throw new Error(errorData.message || "Login failed. Please try again.");
+      throw new Error(errorData.message || "Login failed");
     }
 
+    // Backend'den başarılı yanıt
     const data = await response.json();
-    return data; // token ve role bilgisi döner
+    return data; // Token ve rol bilgisi döner
   } catch (error) {
-    console.error("Login error:", error.message); // Konsola detaylı hata yazılır
+    console.error("Login error:", error.message || "Failed to fetch");
     throw new Error(
       error.message === "Failed to fetch"
-        ? "Unable to connect to the server. Please try again later."
+        ? "Sunucuya bağlanılamıyor. Lütfen daha sonra tekrar deneyin."
         : error.message
     );
   }

@@ -10,7 +10,6 @@ export default function ReservationForm({ onSubmit }) {
     userId: "",
     restaurantId: "",
   });
-
   const [error, setError] = useState("");
 
   const handleChange = (e) => {
@@ -20,66 +19,31 @@ export default function ReservationForm({ onSubmit }) {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Tarih validasyonu
-    const enteredDate = new Date(formData.reservationDate);
+    // Input validation
     const now = new Date();
-    const maxAllowedDate = new Date("9999-12-31T23:59:59"); // Maksimum desteklenen tarih
-
-    if (!formData.reservationDate) {
-      setError("Lütfen bir rezervasyon tarihi seçin.");
+    const enteredDate = new Date(formData.reservationDate);
+    if (!formData.reservationDate || enteredDate < now) {
+      setError("Lütfen gelecekte bir rezervasyon tarihi seçin.");
       return;
     }
-
-    // Geçersiz tarih kontrolü
-    if (isNaN(enteredDate.getTime())) {
-      setError("Geçersiz bir tarih girdiniz. Lütfen doğru bir tarih seçin.");
-      return;
-    }
-
-    // Tarih geçmişte mi?
-    if (enteredDate < now) {
-      setError("Rezervasyon tarihi geçmiş bir tarih olamaz.");
-      return;
-    }
-
-    // Tarih maksimum sınırdan büyük mü?
-    if (enteredDate > maxAllowedDate) {
-      setError("Rezervasyon tarihi maksimum desteklenen tarihi aşamaz.");
-      return;
-    }
-
     if (formData.numberOfGuests <= 0) {
-      setError("Misafir sayısı pozitif bir değer olmalıdır.");
+      setError("Misafir sayısı pozitif olmalıdır.");
       return;
     }
-    if (!formData.userId) {
-      setError("Kullanıcı ID'si boş bırakılamaz.");
-      return;
-    }
-    if (!formData.restaurantId) {
-      setError("Restoran ID'si boş bırakılamaz.");
+    if (!formData.userId || !formData.restaurantId) {
+      setError("Kullanıcı ve restoran bilgilerini doldurun.");
       return;
     }
 
-    setError(""); // Hata yoksa temizle
-
-    // Tarihi ISO 8601 formatına dönüştür
-    const [datePart, timePart] = formData.reservationDate.split("T");
-    const formattedDate = `${datePart}T${timePart}:00.000Z`;
-
-    const formattedData = {
-      ...formData,
-      reservationDate: formattedDate,
-    };
-
-    onSubmit(formattedData); // Dönüştürülmüş veriyi gönder
+    setError(""); // Clear errors
+    onSubmit(formData);
   };
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
       <h2 className={styles.title}>Yeni Rezervasyon</h2>
       <div className={styles.inputGroup}>
-        <label className={styles.label}>Tarih:</label>
+        <label className={styles.label}>Tarih</label>
         <input
           type="datetime-local"
           name="reservationDate"
@@ -89,7 +53,7 @@ export default function ReservationForm({ onSubmit }) {
         />
       </div>
       <div className={styles.inputGroup}>
-        <label className={styles.label}>Misafir Sayısı:</label>
+        <label className={styles.label}>Misafir Sayısı</label>
         <input
           type="number"
           name="numberOfGuests"
@@ -99,7 +63,7 @@ export default function ReservationForm({ onSubmit }) {
         />
       </div>
       <div className={styles.inputGroup}>
-        <label className={styles.label}>Kullanıcı ID:</label>
+        <label className={styles.label}>Kullanıcı ID</label>
         <input
           type="text"
           name="userId"
@@ -109,7 +73,7 @@ export default function ReservationForm({ onSubmit }) {
         />
       </div>
       <div className={styles.inputGroup}>
-        <label className={styles.label}>Restoran ID:</label>
+        <label className={styles.label}>Restoran ID</label>
         <input
           type="text"
           name="restaurantId"
@@ -118,7 +82,7 @@ export default function ReservationForm({ onSubmit }) {
           className={styles.input}
         />
       </div>
-      {error && <p className={styles.error}>{error}</p>} {/* Hata mesajı */}
+      {error && <p className={styles.error}>{error}</p>}
       <button type="submit" className={styles.button}>
         Oluştur
       </button>
