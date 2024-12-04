@@ -1,9 +1,8 @@
-//src>components>restaurants>GetAllRestaurantsForm.fs
-'use client';
+"use client";
 
 import React, { useEffect, useState } from 'react';
-import { getAllRestaurantsService } from '@/services/restaurants/getAllRestaurantsService';
-import styles from '@/styles/restaurants/getAllRestaurantsForm.module.css';
+import { getAllRestaurantsService } from '@/services/restaurants/getAllRestaurantsService'; // Servis çağrısı
+import styles from '@/styles/restaurants/getAllRestaurantsForm.module.css'; // Stil dosyası
 
 const GetAllRestaurantsForm = () => {
   const [restaurants, setRestaurants] = useState([]);
@@ -34,7 +33,7 @@ const GetAllRestaurantsForm = () => {
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>Restoranlar</h1>
+      <h1 className={styles.title}>Tüm Restoranlar</h1>
       <div className={styles.cardContainer}>
         {restaurants.map((restaurant) => (
           <div key={restaurant.id} className={styles.card}>
