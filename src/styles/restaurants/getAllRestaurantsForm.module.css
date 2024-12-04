@@ -1,0 +1,64 @@
+/*src>styles>restaurants>getAllRestaurantsForm.module.css */
+
+.container {
+  margin: auto;
+  max-width: 1200px;
+  padding: 20px;
+}
+
+.title {
+  text-align: center;
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.cardContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.cardTitle {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #007bff;
+}
+
+.cardText {
+  margin: 5px 0;
+  color: #555;
+}
+
+.cardDescription {
+  font-size: 14px;
+  color: #777;
+}
+
+.loading {
+  text-align: center;
+  font-size: 18px;
+  color: #555;
+}
+
+.error {
+  text-align: center;
+  font-size: 18px;
+  color: red;
+}

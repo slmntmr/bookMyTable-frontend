@@ -1,45 +1,42 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
-import { getRestaurantById } from "../../../../../services/restaurants/getRestaurantService";
-import styles from "../../../../../styles/restaurants/viewRestaurant.module.css";
+import { useEffect, useState } from "react";
+import { useParams } from "next/navigation"; // `useParams` ile dinamik ID alınır
+import ViewRestaurantDetails from "../../../../../../components/restaurants/ViewRestaurantDetails";
+import { getRestaurantById } from "../../../../../../services/restaurants/getRestaurantByIdService";
+import Modal from "../../../../../../components/common/Modal";
 
 export default function ViewRestaurantPage() {
-  const router = useRouter();
-  const { id } = router.query; // Dinamik rota parametresi alınır
+  const { id } = useParams(); // `params.id` yerine `useParams()` kullan
   const [restaurant, setRestaurant] = useState(null);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    if (!id) return; // ID varsa veri çek
-
-    async function fetchRestaurant() {
+    const fetchRestaurant = async () => {
       try {
         const data = await getRestaurantById(id);
         setRestaurant(data);
-      } catch (err) {
-        setError(err.message);
+      } catch (error) {
+        setError(error.message || "Restoran bilgisi alınamadı.");
       }
-    }
+    };
 
-    fetchRestaurant();
+    if (id) {
+      fetchRestaurant();
+    }
   }, [id]);
 
   if (error) {
-    return <p className={styles.error}>Hata: {error}</p>;
-  }
-
-  if (!restaurant) {
-    return <p className={styles.loading}>Yükleniyor...</p>;
+    return <Modal message={error} onClose={() => setError(null)} />;
   }
 
   return (
-    <div className={styles.container}>
-      <h1 className={styles.title}>{restaurant.name}</h1>
-      <p className={styles.detail}><strong>Adres:</strong> {restaurant.address}</p>
-      <p className={styles.detail}><strong>Telefon:</strong> {restaurant.phone}</p>
-      <p className={styles.detail}><strong>Açıklama:</strong> {restaurant.description}</p>
+    <div>
+      {restaurant ? (
+        <ViewRestaurantDetails restaurant={restaurant} />
+      ) : (
+        <p>Yükleniyor...</p>
+      )}
     </div>
   );
 }
