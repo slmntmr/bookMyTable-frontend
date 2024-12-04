@@ -45,7 +45,18 @@ export default function AdminDashboard() {
             View All Restaurants
           </a>
         </li>
+
+
+        <li style={{ margin: "10px 0" }}>
+          <a href="/dashboard/admin/restaurants/delete/1" style={{ ...linkStyle, backgroundColor: "#dc3545" }}>
+            Delete Restaurants
+          </a>
+        </li>
+
+
       </ul>
+
+
     </div>
   );
 }
