@@ -4,6 +4,8 @@ import { AuthProvider } from '../context/AuthContext';
 
 import '../styles/variables.css';
 import '../styles/responsive.css';
+import WaveComponent from '@/components/common/WaveComponent';
+import RaindropsComponent from '@/components/common/RaindropsComponent';
 
 export default function RootLayout({ children }) {
   return (
@@ -11,7 +13,10 @@ export default function RootLayout({ children }) {
       <body>
         <AuthProvider>
           <Header />
+          <RaindropsComponent/>
           <main>{children}</main>
+
+         <WaveComponent/>
           <Footer />
         </AuthProvider>
       </body>
