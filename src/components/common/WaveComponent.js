@@ -1,55 +1,6 @@
-"use client";
-
-import React, { useEffect } from "react";
-import styles from "../../styles/common/waveComponent.module.css";
-
-export default function WaveComponent() {
-  useEffect(() => {
-    const canvas = document.createElement("canvas");
-    const element = document.getElementById("wavecontainer");
-    element.appendChild(canvas);
-
-    canvas.width = window.innerWidth;
-    canvas.height = 150;
-
-    const ctx = canvas.getContext("2d");
-
-    const options = {
-      color: "yellow",
-      waveHeight: 100,
-      frequency: 4,
-    };
-
-    function drawWaves() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = options.color;
-      ctx.beginPath();
-      ctx.moveTo(0, canvas.height / 2);
-      for (let x = 0; x < canvas.width; x++) {
-        ctx.lineTo(
-          x,
-          canvas.height / 2 + Math.sin((x + Date.now() / 100) / options.frequency) * options.waveHeight
-        );
-      }
-      ctx.lineTo(canvas.width, canvas.height);
-      ctx.lineTo(0, canvas.height);
-      ctx.closePath();
-      ctx.fill();
-    }
-
-    function animate() {
-      drawWaves();
-      requestAnimationFrame(animate);
-    }
-
-    animate();
-  }, []);
-
-  return <div id="wavecontainer" className={styles.wave}></div>;
-}
 
 
-/* "use client";
+ "use client";
 
 import React, { useEffect } from "react";
 import styles from "../../styles/common/waveComponent.module.css";
@@ -140,4 +91,4 @@ export default function WaveComponent() {
 
   return <div id="raindrops" className={styles.raindrops}></div>;
 }
- */
+ 

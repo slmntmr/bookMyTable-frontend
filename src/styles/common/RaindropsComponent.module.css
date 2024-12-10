@@ -1,20 +1,4 @@
-.raindrops {
-  position: relative;
-  height: 50px;
-  background-color: #84ba3f;
-  overflow: hidden;
-}
 
-.canvas {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 50px;
-}
-
-
-/*
 .raindropsContainer {
   height: 70px;
   overflow: hidden;
@@ -31,4 +15,3 @@
   width: 100%;
   height: 50px;
 }
- */
