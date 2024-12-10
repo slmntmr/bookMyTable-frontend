@@ -16,12 +16,8 @@ export default function RootLayout({ children }) {
           <Header />
           <RaindropsComponent/>
           <main>{children}</main>
-
-
           <Drop/>
-
-
-         <WaveComponent/>
+     <WaveComponent/>
           <Footer />
         </AuthProvider>
       </body>
