@@ -1,8 +1,9 @@
-.drop-container {
+ #drop-container {
   position: relative;
-  height: 50px; /* Komponent yüksekliği */
+  height: 50px !important; /* Komponent yüksekliği */
   overflow: hidden;
   background-color: #84ba3f; /* Su rengi */
+
 }
 
 #drop-canvas {
@@ -10,5 +11,7 @@
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 50px;
+  height: 30px;
+
 }
+

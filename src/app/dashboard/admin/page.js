@@ -12,7 +12,7 @@ export default function AdminDashboard() {
         </li>
         <li style={{ margin: "10px 0" }}>
           <a href="/dashboard/admin/all" style={linkStyle}>
-            All Tasks
+          view all rzervations
           </a>
         </li>
         <li style={{ margin: "10px 0" }}>
@@ -20,11 +20,7 @@ export default function AdminDashboard() {
             Approve Tasks
           </a>
         </li>
-        <li style={{ margin: "10px 0" }}>
-          <a href="/dashboard/admin/delete" style={linkStyle}>
-            Delete Tasks
-          </a>
-        </li>
+        
         <li style={{ margin: "10px 0" }}>
           <a href="/dashboard/admin/pending" style={linkStyle}>
             Pending Tasks

@@ -27,10 +27,10 @@ export default function Drop() {
             console.log("Raindrops plugin tanımlandı.");
             window.jQuery("#drop-container").raindrops({
               waveLength: 340, // Dalga uzunluğu
-              canvasHeight: 50, // Canvas yüksekliği
+              canvasHeight: 30, // Canvas yüksekliği
               color: "#84ba3f", // Dalga rengi
               frequency: 3, // Damlaların düşme sıklığı
-              waveHeight: 100, // Dalga yüksekliği
+              waveHeight: 50, // Dalga yüksekliği
               rippleSpeed: 0.1, // Dalga yayılma hızı
             });
           } else {
@@ -57,7 +57,7 @@ export default function Drop() {
   }, []);
 
   return (
-    <section id="drop-container" className="drop-container">
+    <section id="drop-container" className="drop-container" style={{ height: "40px" }}>
       <canvas id="drop-canvas"></canvas>
     </section>
   );
