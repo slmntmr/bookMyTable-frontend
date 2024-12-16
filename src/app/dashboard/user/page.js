@@ -1,12 +1,41 @@
+"use client";
+
+import "bootstrap/dist/css/bootstrap.min.css";
+import styles from "../../../styles/auth/userDashboard.module.css"; // CSS modülü import edildi
+
 export default function UserDashboard() {
   return (
-    <div>
-      <h1>User Dashboard</h1>
-      <ul>
-        <li><a href="/dashboard/admin/create">Create Reservation</a></li>
-        <li><a href="/dashboard/user/my-reservations">My Reservations</a></li>
-        <li><a href="/dashboard/user/view">View Reservations</a></li>
-      </ul>
+    <div className={`container mt-5 ${styles.container}`}>
+      <div className="text-center mb-4">
+        <h1 className={styles.header}>User Dashboard</h1>
+      </div>
+      <div className="d-grid gap-3">
+        <button
+          className="btn btn-primary btn-lg"
+          onClick={() => (window.location.href = "/dashboard/admin/create")}
+        >
+          Create Reservation
+        </button>
+        <button
+          className="btn btn-primary btn-lg"
+          onClick={() => (window.location.href = "/dashboard/user/my-reservations")}
+        >
+          My Reservations
+        </button>
+        <button
+          className="btn btn-primary btn-lg"
+          onClick={() => (window.location.href = "/dashboard/user/view")}
+        >
+          View Reservations
+        </button>
+
+        <button
+          className="btn btn-primary btn-lg"
+          onClick={() => (window.location.href = "/dashboard/user/all")}
+        >
+          view all rzervations
+        </button>
+      </div>
     </div>
   );
 }
