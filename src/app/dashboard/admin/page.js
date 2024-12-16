@@ -20,7 +20,7 @@ export default function AdminDashboard() {
             Approve Tasks
           </a>
         </li>
-        
+
         <li style={{ margin: "10px 0" }}>
           <a href="/dashboard/admin/pending" style={linkStyle}>
             Pending Tasks

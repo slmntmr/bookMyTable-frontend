@@ -28,12 +28,23 @@ export default function UserDashboard() {
         >
           View Reservations
         </button>
-
         <button
           className="btn btn-primary btn-lg"
           onClick={() => (window.location.href = "/dashboard/user/all")}
         >
-          view all rzervations
+          View All Reservations
+        </button>
+        <button
+          className="btn btn-primary btn-lg"
+          onClick={() => (window.location.href = "/dashboard/user/restaurants/getAllRestaurants")}
+        >
+          View All Restaurants
+        </button>
+        <button
+          className="btn btn-danger btn-lg"
+          onClick={() => (window.location.href = "/dashboard/admin/restaurants/delete")}
+        >
+          Delete Restaurants
         </button>
       </div>
     </div>
