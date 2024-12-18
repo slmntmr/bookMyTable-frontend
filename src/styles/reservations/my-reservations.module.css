@@ -1,0 +1,30 @@
+.container {
+  padding: 20px;
+}
+
+.pageTitle {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.error {
+  color: red;
+  margin-top: 20px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+
+.table th {
+  background-color: #f4f4f4;
+  font-weight: bold;
+}

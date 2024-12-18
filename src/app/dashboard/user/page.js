@@ -12,19 +12,19 @@ export default function UserDashboard() {
       <div className="d-grid gap-3">
         <button
           className="btn btn-primary btn-lg"
-          onClick={() => (window.location.href = "/dashboard/admin/create")}
+          onClick={() => (window.location.href = "/dashboard/user/create")}
         >
           Create Reservation
         </button>
         <button
           className="btn btn-primary btn-lg"
-          onClick={() => (window.location.href = "/dashboard/user/my-reservations")}
+          onClick={() => (window.location.href = "/dashboard/user/reservation/my-reservations")}
         >
           My Reservations
         </button>
         <button
           className="btn btn-primary btn-lg"
-          onClick={() => (window.location.href = "/dashboard/user/view")}
+          onClick={() => (window.location.href = "/dashboard/user/reservation/view")}
         >
           View Reservations
         </button>
